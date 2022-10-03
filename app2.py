@@ -44,7 +44,7 @@ def prediction(img_path):
 @app.route("/", methods=['GET', 'POST'])                 #initialising
 def home():                                              #function call
 
-    return render_template('index.html')                  #return and calling HTML page (designed template)
+    return render_template('home.html')                  #return and calling HTML page (designed template)
 
 
 @app.route("/predict", methods = ['GET','POST'])
@@ -59,22 +59,7 @@ def predict():
         print(filename)
         product = prediction(file_path)
         print(product)
-        if product == "Angry":
-            url = "https://open.spotify.com/search/angry"
-        elif product == "Disgust":
-            url = "https://open.spotify.com/search/disgust"
-        elif product == "Fear":
-            url = "https://open.spotify.com/search/disgust"
-        elif product == "Happy":
-            url = "https://open.spotify.com/search/fear"
-        elif product == "Neutral":
-            url = "https://open.spotify.com/search/neutral"
-        elif product == "Sad":
-            url = "https://open.spotify.com/search/sad"
-        elif product == "Surprise":
-            url = "https://open.spotify.com/search/surprise"
         
-    return render_template('halaman1.html', product = product, user_image = file_path, url=url)    
-
+    return render_template('predict.html', product = product, user_image = file_path)    
 if __name__ == "__main__":
     app.run()                    
